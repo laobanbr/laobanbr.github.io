@@ -1,6 +1,8 @@
 # tabata2
 
-> A Vue.js project
+A sample project project to try vuejs.
+
+HIIT training. 20 sec work followed by 10 sec rest, repeat for as many rounds as set.
 
 ## Build Setup
 
