@@ -10,8 +10,38 @@
             <button class="btn btn-danger" @click="stopRound">Stop</button>
             <button class="btn btn-primary" @click="reset">Reset</button>
             <hr>
-            <p>How many rounds?</p>
-            <input type="text" v-model="nRounds">
+            
+            <div class="input-group" style="width: 80%">
+                <span class="input-group-addon">Number of Rounds:</span>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Numer of rounds" 
+                    aria-label="Number of rounds"
+                    v-model="nRounds">
+                
+            </div>
+            <br>
+            <div class="input-group" style="width: 80%">
+                <span class="input-group-addon">Round Lenght:</span>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Numer of rounds" 
+                    aria-label="Number of rounds"
+                    v-model="roundLength">
+            </div>
+            <br>
+            <div class="input-group" style="width: 80%">
+                <span class="input-group-addon">Rest Time:</span>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="Numer of rounds" 
+                    aria-label="Number of rounds"
+                    v-model="restLength">
+            </div>
+            
             <hr>
             <h3>Total time: {{ totalTime }}</h3>
         </div>
@@ -24,6 +54,8 @@
         data () {
             return {
                 nRounds: 8,
+                roundLength: 20,
+                restLength: 10,
                 roundsElapsed: 0,
                 bgColor: 'red',
                 totalTime: 0,
@@ -41,11 +73,11 @@
                         if (this.timer == 0){
                             if (this.mode=='rest'){
                                 this.mode = 'active'
-                                this.timer = 20;
+                                this.timer = this.roundLength;
                                 this.bgColor = 'green';
                             } else {
                                 this.mode = 'rest';
-                                this.timer = 10;
+                                this.timer = this.restLength;
                                 this.bgColor = 'red'
                                 this.roundsElapsed += 1;
                                 if (this.roundsElapsed == this.nRounds){
@@ -71,7 +103,7 @@
                 this.stopRound();
                 this.running = false;
                 this.mode = 'rest';
-                this.timer = 2;
+                this.timer = this.restLength;
                 this.bgColor = 'red';
                 this.totalTime = 0;
                 this.roundsElapsed = 0;
@@ -92,6 +124,7 @@ html, body {
     grid-template-rows: auto;
     height: 100%;
     text-align: center;
+    font-family: "Roboto";
 }
 #timer {
     grid-column: 2;
@@ -103,13 +136,18 @@ html, body {
     width: 100%;
     padding-top: 20%;
 }
+
+#timer > h1 {
+    font-size: 100px;
+}
+
 #controls {
     grid-column: 1;
-
     grid-row: 1;
     height: 100%;
     width: 100%;
     border-right: 1px solid #333;
+    padding: 10px;
 }
 
 .red {
