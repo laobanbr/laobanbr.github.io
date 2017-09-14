@@ -4,6 +4,8 @@ A sample project project to try vuejs.
 
 HIIT training. 20 sec work followed by 10 sec rest, repeat for as many rounds as set.
 
+See it live <a href ="https://laobanbr.github.io/">https://laobanbr.github.io/</a>
+
 ## Build Setup
 
 ``` bash
